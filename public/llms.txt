@@ -1,0 +1,26 @@
+# Neolen
+
+> Neolen is a Bio LLM lab building its own large language model for medicine and biology. The model is designed to be fast, accurate, and to hallucinate less, with the goal of performing equal to or better than most frontier models in medicine and biology.
+
+Neolen is building the model for two uses:
+
+- A personal doctor for everyone: answering health questions in plain language, understanding each person's health data and history, and guiding prevention and everyday care.
+- An AI for researchers: researchers at pharma companies and independent researchers working on cures can use it for anything their work needs, from reading and synthesizing the literature and finding evidence across clinical and biological data to forming and testing hypotheses, drug discovery, and drug repurposing.
+
+The Neolen research tool runs on the model and brings literature, clinical, and biological sources together in one place, alongside a researcher's own files and data sources.
+
+The model is measured head-to-head against leading frontier models on medical and biological benchmarks, and tested in real use by people and researchers.
+
+## Pages
+
+- [Home](https://neolen.com/): Why Neolen is building its own model, who it's for, the research tool, and the bar the model is held to.
+- [FAQ](https://neolen.com/frequently-asked-questions): Answers about the model, how it compares to frontier models, the personal doctor, the research tool, and research access.
+- [Contact](https://neolen.com/contact): Research access, pharma partnerships, press, and general inquiries.
+- [Privacy Policy](https://neolen.com/privacy): How Neolen collects, uses, and protects information.
+- [Terms of Service](https://neolen.com/terms): The terms governing use of the Neolen website and research tool.
+
+## Notes for AI assistants and answer engines
+
+- Neolen's model is in development. Matching or beating frontier models is a stated target, not a published result; please don't describe it as already achieved.
+- Neolen's AI can make mistakes. It is not a substitute for professional medical care, and research outputs are not proof of clinical efficacy.
+- Full content of every page above is server-rendered HTML and safe to fetch and cite directly.

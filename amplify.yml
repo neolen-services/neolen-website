@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Pin pnpm to the version in package.json "packageManager".
+        - npm i -g pnpm@10.28.0
+        - pnpm install --frozen-lockfile
+    build:
+      commands:
+        - env | grep -E '^NEXT_PUBLIC_' >> .env.production || true
+        - pnpm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
