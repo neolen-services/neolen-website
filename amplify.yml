@@ -11,7 +11,7 @@ frontend:
         - env | grep -E '^NEXT_PUBLIC_' >> .env.production || true
         - pnpm run build
   artifacts:
-    baseDirectory: .next
+    baseDirectory: out
     files:
       - '**/*'
   cache:

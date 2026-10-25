@@ -1,7 +1,9 @@
+import { readFile } from "node:fs/promises"
+import path from "node:path"
 import { ImageResponse } from "next/og"
 
-export const runtime = "edge"
-export const contentType = "image/png"
+// Rendered once at build time and written to out/og.png by the static export.
+export const dynamic = "force-static"
 
 function arrayBufferToBase64(buffer: ArrayBuffer) {
   let binary = ""
@@ -12,11 +14,9 @@ function arrayBufferToBase64(buffer: ArrayBuffer) {
   return btoa(binary)
 }
 
-export async function GET(request: Request) {
-  const origin = new URL(request.url).origin
-  const logoSrc = await fetch(`${origin}/logo.png`)
-    .then((res) => (res.ok ? res.arrayBuffer() : null))
-    .then((buf) => (buf ? `data:image/png;base64,${arrayBufferToBase64(buf)}` : null))
+export async function GET() {
+  const logoSrc = await readFile(path.join(process.cwd(), "public/logo.png"))
+    .then((buf) => `data:image/png;base64,${arrayBufferToBase64(new Uint8Array(buf).buffer)}`)
     .catch(() => null)
 
   return new ImageResponse(

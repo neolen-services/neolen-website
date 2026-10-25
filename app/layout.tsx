@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.metaDescription,
-    images: [{ url: "/og", width: 1200, height: 630, alt: `${siteConfig.name} — ${siteConfig.tagline}` }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${siteConfig.name} — ${siteConfig.tagline}` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.metaDescription,
-    images: ["/og"],
+    images: ["/og.png"],
   },
   // Favicon / apple touch icon are served from app/icon.png and app/apple-icon.png
   // via Next.js's file-based metadata convention — no manual `icons` field needed.

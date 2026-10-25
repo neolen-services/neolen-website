@@ -17,6 +17,27 @@ pnpm dev
 
 Checks: `pnpm typecheck`, `pnpm lint`, `pnpm build`.
 
+## Deploy
+
+The site is a fully static export: `pnpm build` writes plain HTML/CSS/JS to `out/`,
+and nginx serves it from `/var/www/neolen.com` (no Node server at runtime).
+
+```bash
+./deploy/deploy.sh   # build and publish out/ to /var/www/neolen.com
+```
+
+One-time server setup:
+
+```bash
+sudo cp deploy/nginx/neolen.com.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/neolen.com.conf /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+sudo certbot --nginx -d neolen.com -d www.neolen.com   # after DNS points here
+```
+
+Redirects (`/faq`, `www`, trailing slashes) live in the nginx config, since a static
+export cannot run them.
+
 ## Environment
 
 | Variable               | Default                  | Purpose                                        |
@@ -27,6 +48,7 @@ Checks: `pnpm typecheck`, `pnpm lint`, `pnpm build`.
 ## Structure
 
 - `app/(marketing)/` — public pages and their shared header/footer layout
-- `app/og`, `app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts` — SEO files
+- `app/og.png`, `app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts` — SEO files
 - `components/marketing/` — page sections and figures
 - `lib/site-config.ts` — company details, navigation, and app links
+- `deploy/` — nginx config and deploy script

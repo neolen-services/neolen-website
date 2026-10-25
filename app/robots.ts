@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next"
 import { siteConfig } from "@/lib/site-config"
 
+export const dynamic = "force-static"
+
 // This site only serves public pages; the signed-in research app is deployed
 // separately and manages its own robots rules.
 const disallow = ["/api/"]
