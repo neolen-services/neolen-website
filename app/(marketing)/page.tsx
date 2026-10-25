@@ -5,13 +5,16 @@ import {
   ArrowRight,
   BadgeCheck,
   BookOpen,
+  CalendarDays,
   FlaskConical,
   Gauge,
   Lightbulb,
+  ListChecks,
   MessageCircleQuestion,
   Search,
   ShieldCheck,
   ShieldPlus,
+  Stethoscope,
   Target,
   Trophy,
   Zap,
@@ -23,8 +26,9 @@ import { CTASection } from "@/components/marketing/CTASection"
 import { SystemDiagram } from "@/components/marketing/SystemDiagram"
 import { DepthFigure } from "@/components/marketing/DepthFigure"
 import { ResearchSessionPreview } from "@/components/marketing/ResearchSessionPreview"
+import { NeoDayPreview } from "@/components/marketing/NeoDayPreview"
 import { Button } from "@/components/ui/button"
-import { appLinks, siteConfig } from "@/lib/site-config"
+import { appLinks, makeMyHealthLinks, siteConfig } from "@/lib/site-config"
 import { JsonLd, softwareApplicationJsonLd } from "@/lib/structured-data"
 
 const titleText = `${siteConfig.name} — A world-class LLM for medicine and biology`
@@ -73,6 +77,32 @@ const researcherJobs = [
   { icon: Lightbulb, label: "Form and test new hypotheses" },
   { icon: FlaskConical, label: "Drug discovery, repurposing, and beyond" },
 ]
+
+// Copy follows makemyhealth.app ("Inside the app").
+const makeMyHealthFeatures = [
+  {
+    icon: Stethoscope,
+    title: "Neo",
+    description: "Your AI doctor. Ask anything, any hour. It knows your history and speaks up first.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Health calendar",
+    description: "Everything you log and sync, with your reminders, in one place.",
+  },
+  {
+    icon: Target,
+    title: "Goals",
+    description: "Tell Neo what you want. It builds the plan and keeps it on track.",
+  },
+  {
+    icon: ListChecks,
+    title: "Your day",
+    description: "Across all your goals, Neo picks what matters most today.",
+  },
+]
+
+const makeMyHealthAvailability = ["iOS & Android in India", "Apple Health & Health Connect", "7-day free trial"]
 
 const researchToolFeatures = [
   {
@@ -243,6 +273,13 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
+            <Link
+              href="#make-my-health"
+              className="mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-ink-1 underline-offset-4 hover:underline"
+            >
+              Meet Neo in Make My Health
+              <ArrowRight className="size-3.5" aria-hidden="true" />
+            </Link>
           </article>
 
           <article className="flex flex-col rounded-3xl border border-line bg-surface p-7 sm:p-9">
@@ -276,10 +313,68 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 03 — Research tool. Rendered in the dark palette in both themes. */}
+      {/* 03 — Make My Health, our personal doctor app. Preview sits left to alternate with the research tool. */}
+      <Section
+        id="make-my-health"
+        index="03"
+        eyebrow="Make My Health"
+        title={
+          <>
+            Meet Neo, a doctor who <em className="text-brand-gradient">already knows you</em>
+          </>
+        }
+        description="Make My Health is our personal doctor app. Neo, the AI doctor inside it, learns what's normal for you from what you log and what your watch records, speaks up when something changes, and plans each day around your goals."
+        className="border-t border-line"
+      >
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="flex flex-col gap-8 lg:col-span-5">
+            <ul className="grid gap-x-6 gap-y-7 sm:grid-cols-2">
+              {makeMyHealthFeatures.map((feature) => (
+                <li key={feature.title} className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <feature.icon className="size-4 text-ink-2" aria-hidden="true" />
+                    <h3 className="text-base font-semibold text-ink-1">{feature.title}</h3>
+                  </div>
+                  <p className="text-pretty text-sm leading-relaxed text-ink-3">{feature.description}</p>
+                </li>
+              ))}
+            </ul>
+            <ul className="flex flex-wrap gap-1.5">
+              {makeMyHealthAvailability.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-full border border-line px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-3"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" variant="light">
+                <Link href={makeMyHealthLinks.download}>
+                  Get the app
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href={makeMyHealthLinks.url}>Visit makemyhealth.app</Link>
+              </Button>
+            </div>
+            <p className="text-pretty text-xs leading-relaxed text-ink-4">
+              Neo is an AI, not a licensed medical professional. It doesn&rsquo;t diagnose or prescribe,
+              and it tells you when to see a doctor.
+            </p>
+          </div>
+          <div className="lg:order-first lg:col-span-7">
+            <NeoDayPreview />
+          </div>
+        </div>
+      </Section>
+
+      {/* 04 — Research tool. Rendered in the dark palette in both themes. */}
       <Section
         id="research-tool"
-        index="03"
+        index="04"
         eyebrow="Research tool"
         title={
           <>
@@ -321,8 +416,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 04 — Our bar */}
-      <Section id="focus" index="04" eyebrow="Our bar" align="center">
+      {/* 05 — Our bar */}
+      <Section id="focus" index="05" eyebrow="Our bar" align="center">
         <p className="font-editorial mx-auto -mt-4 max-w-4xl text-balance text-center text-4xl text-ink-1 sm:text-6xl">
           Match or beat frontier models where it matters most:{" "}
           <em className="text-brand-gradient">medicine and biology</em>.

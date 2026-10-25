@@ -65,6 +65,12 @@ export const appLinks = {
   signInHost: `${appUrl.replace(/^https?:\/\//, "")}/login`,
 }
 
+// Make My Health, our personal doctor app, has its own site.
+export const makeMyHealthLinks = {
+  url: "https://www.makemyhealth.app",
+  download: "https://www.makemyhealth.app/download",
+}
+
 export type NavLink = {
   label: string
   href: string
@@ -84,6 +90,7 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "Why our own model", href: "/#model" },
       { label: "Who it's for", href: "/#who-it-serves" },
+      { label: "Make My Health", href: "/#make-my-health" },
       { label: "Research tool", href: "/#research-tool" },
       { label: "Our bar", href: "/#focus" },
     ],

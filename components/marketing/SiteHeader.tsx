@@ -8,7 +8,7 @@ import { Menu, X, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { appLinks, primaryNav } from "@/lib/site-config"
+import { primaryNav } from "@/lib/site-config"
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -48,9 +48,6 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <ThemeToggle />
-          <Button asChild variant="ghost" size="sm" className="text-sm">
-            <Link href={appLinks.signIn}>Sign in</Link>
-          </Button>
           <Button asChild size="sm" variant="light" className="text-sm">
             <Link href="/contact#research-access">
               Request access
@@ -88,9 +85,6 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-4 flex flex-col gap-2">
-            <Button asChild variant="outline" className="w-full justify-center">
-              <Link href={appLinks.signIn} onClick={() => setOpen(false)}>Sign in</Link>
-            </Button>
             <Button asChild variant="light" className="w-full justify-center">
               <Link href="/contact#research-access" onClick={() => setOpen(false)}>
                 Request access
