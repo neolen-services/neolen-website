@@ -5,6 +5,8 @@ import type { NextConfig } from "next"
 // in the nginx config because static export cannot run them.
 const nextConfig: NextConfig = {
   output: "export",
+  // No server to run the /_next/image optimizer, so serve images as-is.
+  images: { unoptimized: true },
 }
 
 export default nextConfig
